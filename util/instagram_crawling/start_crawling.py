@@ -57,10 +57,10 @@ def instagram_main():
     is_file_save, is_tag_file_save = crawling_instagram(args=args)
 
     if is_file_save:
-        print("file save success - {}".format(args.extract_file))
+        print("file save success - {}_{}.csv".format(args.extract_file, HASH_TAG))
 
     if is_tag_file_save:
-        print("file save success - {}".format(args.extract_tag_file))
+        print("file save success - {}_{}.csv".format(args.extract_tag_file, HASH_TAG))
 
 
 if __name__ == "__main__":

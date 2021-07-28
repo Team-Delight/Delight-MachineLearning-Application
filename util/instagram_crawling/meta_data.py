@@ -1,4 +1,4 @@
-EXTRACT_NUM = 50
+EXTRACT_NUM = 1
 HASH_TAG = "떡볶이"
 
 LOGIN_OPTION = "facebook"

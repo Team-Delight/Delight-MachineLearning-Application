@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 import random
 import time
+import os
 from meta_data import *
 
 
@@ -143,7 +144,9 @@ def save_extract_data_to_csv_file(location_infos, location_hrefs, upload_ids, da
             {"location_info": location_infos, "location_href": location_hrefs, "upload_id": upload_ids,
              "date_text": date_texts, "date_time": date_times, "date_title": date_titles, "main_text": main_texts,
              "comment": comments})
-        insta_info_df.to_csv("{}_{}.csv".format(save_file_name, HASH_TAG),
+        if not os.path.exists('./results'):
+            os.makedirs("./results")
+        insta_info_df.to_csv("./results/{}_{}.csv".format(save_file_name, HASH_TAG),
                              encoding="utf-8-sig",
                              index=False)
         is_save_file_success = True
@@ -156,7 +159,10 @@ def save_extract_data_to_csv_file(location_infos, location_hrefs, upload_ids, da
 def save_extract_tag_data_to_csv_file(instagram_tags, save_file_name_tag):
     try:
         insta_tag_df = pd.DataFrame({"tag": instagram_tags})
-        insta_tag_df.to_csv("{}_{}.csv".format(save_file_name_tag, HASH_TAG),
+
+        if not os.path.exists('./results'):
+            os.makedirs("./results")
+        insta_tag_df.to_csv("./results/{}_{}.csv".format(save_file_name_tag, HASH_TAG),
                             encoding="utf-8-sig",
                             index=False)
         is_save_tag_file_success = True
