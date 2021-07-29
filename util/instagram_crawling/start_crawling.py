@@ -1,67 +1,41 @@
 # -*- coding:utf-8 -*-
 
-import argparse
-from meta_data import *
 from get_data import crawling_instagram
+from meta_data import *
+from food_lists import item_lists
+import time
 
 
-parser = argparse.ArgumentParser(description='Crawling Instagram Post',
-                                 formatter_class=argparse.RawTextHelpFormatter)
+def instagram_main(arguments):
+    args = arguments
 
-
-def get_arguments():
-
-    parser.add_argument("--id",
-                        help="instagram or facebook id",
-                        required=True, type=str)
-
-    parser.add_argument("--password",
-                        help="instagram or facebook password",
-                        required=True, type=str)
-
-    parser.add_argument("--hash_tag",
-                        help="The hashtag you want to extract.",
-                        default=HASH_TAG, type=str)
-
-    parser.add_argument("--display",
-                        help="display selenium chromedriver or not 0 or 1",
-                        default=1, type=int)
-
-    parser.add_argument("--driver_path",
-                        help="selenium chrome driver path",
-                        default=DRIVER_PATH, type=str)
-
-    parser.add_argument("--extract_num",
-                        help="The number of posts I want to extract.",
-                        default=EXTRACT_NUM, type=int)
-
-    parser.add_argument("--login_option",
-                        help="select login account [facebook, instagram]",
-                        default=LOGIN_OPTION, type=str)
-
-    parser.add_argument("--extract_file",
-                        help="set extract file name",
-                        default=SAVE_FILE_NAME, type=str)
-
-    parser.add_argument("--extract_tag_file",
-                        help="set extract tag file name",
-                        default=SAVE_FILE_NAME_TAG, type=str)
-
-    _args = parser.parse_args()
-
-    return _args
-
-
-def instagram_main():
-    args = get_arguments()
     is_file_save, is_tag_file_save = crawling_instagram(args=args)
 
     if is_file_save:
-        print("file save success - {}_{}.csv".format(args.extract_file, HASH_TAG))
+        print("file save success - {}_{}.csv".format(args["extract_file"], args["hash_tag"]))
 
     if is_tag_file_save:
-        print("file save success - {}_{}.csv".format(args.extract_tag_file, HASH_TAG))
+        print("file save success - {}_{}.csv".format(args["extract_tag_file"], args["hash_tag"]))
 
 
 if __name__ == "__main__":
-    instagram_main()
+
+    arguments = {
+        "id": "",
+        "password": "",
+        "login_option": LOGIN_OPTION,
+        "driver_path": DRIVER_PATH,
+        "display": 1,
+        "extract_file": SAVE_FILE_NAME,
+        "extract_tag_file": SAVE_FILE_NAME_TAG,
+        "hash_tag": "variable",
+        "extract_num": EXTRACT_NUM,
+    }
+
+    for index, food in enumerate(item_lists):
+        print("===== {}/{}번째 {} 음식 정보 크롤링 시작합니다. =====".format(index + 1, len(item_lists), food))
+
+        arguments["hash_tag"] = food
+
+        instagram_main(arguments)
+        time.sleep(3)

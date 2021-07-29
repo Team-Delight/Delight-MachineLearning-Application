@@ -115,17 +115,6 @@ def click_first_image(driver):
     return is_first_img_click_success
 
 
-def click_more_comment_button(driver):
-    random_sleep_time = make_radom_sleep_time(start=1, end=3)
-    while True:
-        try:
-            more_btn = driver.find_element_by_css_selector(COMMENT_MORE_BTN)
-            more_btn.click()
-            time.sleep(random_sleep_time)
-        except:
-            break
-
-
 def click_next_arrow_button(driver):
     try:
         WebDriverWait(driver, 100).until(EC.presence_of_element_located((By.CSS_SELECTOR, NEXT_ARROW_BTN_CSS_1)))
@@ -138,15 +127,14 @@ def click_next_arrow_button(driver):
 
 
 def save_extract_data_to_csv_file(location_infos, location_hrefs, upload_ids, date_texts,
-                                  date_times, date_titles, main_texts, comments, save_file_name):
+                                  date_times, date_titles, main_texts, save_file_name, hash_tag):
     try:
         insta_info_df = pd.DataFrame(
             {"location_info": location_infos, "location_href": location_hrefs, "upload_id": upload_ids,
-             "date_text": date_texts, "date_time": date_times, "date_title": date_titles, "main_text": main_texts,
-             "comment": comments})
+             "date_text": date_texts, "date_time": date_times, "date_title": date_titles, "main_text": main_texts})
         if not os.path.exists('./results'):
             os.makedirs("./results")
-        insta_info_df.to_csv("./results/{}_{}.csv".format(save_file_name, HASH_TAG),
+        insta_info_df.to_csv("./results/{}_{}.csv".format(save_file_name, hash_tag),
                              encoding="utf-8-sig",
                              index=False)
         is_save_file_success = True
@@ -156,13 +144,13 @@ def save_extract_data_to_csv_file(location_infos, location_hrefs, upload_ids, da
     return is_save_file_success
 
 
-def save_extract_tag_data_to_csv_file(instagram_tags, save_file_name_tag):
+def save_extract_tag_data_to_csv_file(instagram_tags, save_file_name_tag, hash_tag):
     try:
         insta_tag_df = pd.DataFrame({"tag": instagram_tags})
 
         if not os.path.exists('./results'):
             os.makedirs("./results")
-        insta_tag_df.to_csv("./results/{}_{}.csv".format(save_file_name_tag, HASH_TAG),
+        insta_tag_df.to_csv("./results/{}_{}.csv".format(save_file_name_tag, hash_tag),
                             encoding="utf-8-sig",
                             index=False)
         is_save_tag_file_success = True

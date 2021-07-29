@@ -1,5 +1,4 @@
-EXTRACT_NUM = 1
-HASH_TAG = "떡볶이"
+EXTRACT_NUM = 200
 
 LOGIN_OPTION = "facebook"
 DRIVER_PATH = "../../../../chromedriver"
@@ -24,9 +23,6 @@ UPLOAD_USER_ID_CSS = "div.e1e1d > span.Jv7Aj.MqpiF  > a.sqdOP.yWX7d._8A5w5.ZIAjV
 DATE_CSS = "div.k_Q0X.NnvRN > a.c-Yi7 > time._1o9PC.Nzb55"
 MAIN_TEXT_CSS = "div.C7I1f.X7jCj > div.C4VMK > span"
 HASH_TAG_CSS = ".C7I1f.X7jCj"
-COMMENT_MORE_BTN = "button.dCJp8.afkep"
-COMMENT_ID_CSS = "ul.Mr508 > div.ZyFrc > li.gElp9.rUo9f > div.P9YgZ > div.C7I1f > div.C4VMK > h3"
-COMMENT_TEXT_CSS="ul.Mr508 > div.ZyFrc > li.gElp9.rUo9f > div.P9YgZ > div.C7I1f > div.C4VMK > span"
 
 PRINT_FLAG=False
 NEXT_ARROW_BTN_CSS_1="._65Bje.coreSpriteRightPaginationArrow"
