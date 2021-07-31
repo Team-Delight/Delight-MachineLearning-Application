@@ -1,18 +1,16 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+from model.collaborative_filtering import foods_collaborative_filtering
 
 app = Flask(__name__)
 CORS(app)
 
-
-def get_ml_results(selected_foods):
-    pass
-
-
-@app.route('/api/ml-servers', methods=['POST'])
+@app.route('/api/Ml-servers', methods=['POST'])
 def find_ml_results():
-    selected_foods = request.form['foods']
-    recommended_foods = get_ml_results(selected_foods)
+    java_server_json_data = request.get_json()
+    selected_foods = java_server_json_data["foods"]
+    data_root = "./model/temp_data.csv"
+    recommended_foods = foods_collaborative_filtering(selected_foods, data_root)
 
     return jsonify(
         {
@@ -22,4 +20,4 @@ def find_ml_results():
 
 
 if __name__ == '__main__':
-    app.run(port=9090)
+    app.run(host="localhost",port=9090, debug=True)
