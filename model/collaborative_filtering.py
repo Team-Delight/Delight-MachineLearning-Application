@@ -3,16 +3,20 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
+def custom_array(title, similarity):
+    return {arg[0]: arg[1][1] for arg in zip(title, similarity)}
+
+
 def make_input_data(data_path):
-    food_info = pd.read_csv(data_path,encoding="utf-8")
+    food_info = pd.read_csv(data_path, encoding="utf-8")
     food_info['soup'] = food_info.apply(create_soup, axis=1)
     return food_info
 
 
 def create_soup(food_info):
-    ing = food_info['ingredients'].replace(",","").replace("[","").replace("]","").replace("'","")
-    insta = food_info['instagram'].replace(",","").replace("[","").replace("]","").replace("'","")
-    return ing+insta
+    ing = food_info['ingredients'].replace(",", "").replace("[", "").replace("]", "").replace("'", "")
+    insta = food_info['instagram'].replace(",", "").replace("[", "").replace("]", "").replace("'", "")
+    return ing + insta
 
 
 def make_count_vectorizer(series):
@@ -30,8 +34,7 @@ def get_recommendations(title, indices, cosine_sim, dataframe):
     return dataframe['title'].iloc[movie_indices], sim_scores
 
 
-def collaborative_filtering(title, data_path):
-
+def one_food_collaborative_filtering(title, data_path):
     food_info = make_input_data(data_path)
     count_matrix = make_count_vectorizer(food_info['soup'])
 
@@ -41,9 +44,33 @@ def collaborative_filtering(title, data_path):
     results, sim_scores = get_recommendations(title, indices, cosine_sim, food_info)
     return results.tolist(), sim_scores
 
-if __name__ == "__main__":
-    recommendations, scores = collaborative_filtering("닭볶음탕", "./temp_data.csv")
-    print(recommendations)
-    print(scores)
 
-    # 여러개 음식이 들어왔을때에 대한 로직 추가 필요
+def foods_collaborative_filtering(foods_list, data_path):
+    final_result = dict()
+    foods_name_list = set()
+
+    for food in foods_list:
+        recommendations, score = one_food_collaborative_filtering(food, data_path)
+
+        consideration_food = custom_array(recommendations, score)
+        new_food_name_list = set(consideration_food) - foods_name_list
+        duplicated_foods_list = set(consideration_food) - new_food_name_list
+
+        for food in recommendations:
+            if food not in foods_list:
+                if food in new_food_name_list:
+                    final_result[food] = consideration_food[food]
+                    foods_name_list.add(food)
+                if food in duplicated_foods_list:
+                    final_result[food] += consideration_food[food]
+
+    food_top3 = sorted(final_result.items(), key=(lambda x: x[1]), reverse=True)[:3]
+    food_top3_list = [food[0] for food in food_top3]
+    return food_top3_list
+
+
+if __name__ == "__main__":
+    # Test
+    foods_list = ['잔치국수', '돼지갈비찜', '소불고기']
+    results = foods_collaborative_filtering(foods_list, "./temp_data.csv")
+    print(results)

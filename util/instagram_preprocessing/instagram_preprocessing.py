@@ -85,6 +85,7 @@ def start_preprocessing_all_foods(data_path):
 
 
 if __name__ == "__main__":
+    # Test
     rawdata_path = "../instagram_crawling/results/"
 
     print(start_preprocessing_all_foods(rawdata_path))
