@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+DATA_ROOT = "./util/instagram_preprocessing/results/input_data.csv"
 
 def custom_array(title, similarity):
     return {arg[0]: arg[1][1] for arg in zip(title, similarity)}
@@ -44,6 +45,12 @@ def one_food_collaborative_filtering(title, data_path):
     results, sim_scores = get_recommendations(title, indices, cosine_sim, food_info)
     return results.tolist(), sim_scores
 
+def percentage_score(score_list):
+    percentage = list(map(lambda x: (x / sum(score_list)) * 100, score_list))
+    result = list(map(lambda x: round(x, 1), percentage))
+    result[2] = round(100.0 - (result[0] + result[1]), 1)
+    return result
+
 
 def foods_collaborative_filtering(foods_list, data_path):
     final_result = dict()
@@ -66,11 +73,15 @@ def foods_collaborative_filtering(foods_list, data_path):
 
     food_top3 = sorted(final_result.items(), key=(lambda x: x[1]), reverse=True)[:3]
     food_top3_list = [food[0] for food in food_top3]
-    return food_top3_list
+    food_top3_score = percentage_score([food[1] for food in food_top3])
+    return food_top3_list, food_top3_score
 
 
 if __name__ == "__main__":
     # Test
-    foods_list = ['잔치국수', '돼지갈비찜', '소불고기']
-    results = foods_collaborative_filtering(foods_list, "./temp_data.csv")
-    print(results)
+    foods_list = ['해물쟁반짜장', '사천짜장', '탕수육', '짜장면', '돼지갈비찜', '제육볶음', '보쌈']
+    TEST_ROOT = "../util/instagram_preprocessing/results/input_data.csv"
+    results_name_list, result_score_list = foods_collaborative_filtering(foods_list,
+                                                                         TEST_ROOT)
+    print(results_name_list)
+    print(result_score_list)
