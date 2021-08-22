@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-DATA_ROOT = "./util/instagram_preprocessing/results/input_data.csv"
+DATA_ROOT = "./data/input_data.csv"
 
 def custom_array(title, similarity):
     return {arg[0]: arg[1][1] for arg in zip(title, similarity)}
