@@ -99,7 +99,8 @@ def words_count(food_name, text_list):
                     ("세상" not in word) and ("충" not in word) and ("방" not in word) and ("끼" not in word) and \
                     ("그레이" not in word) and ("종" not in word) and ("나" not in word) and ("쥬" not in word) and \
                     ("이" not in word) and ("컵" not in word) and ("도" not in word) and ("코" not in word) and \
-                    ("찾기" not in word) and ("단" not in word) and ("시" not in word) and ("날" not in word):
+                    ("찾기" not in word) and ("단" not in word) and ("시" not in word) and ("날" not in word)and \
+                    ("배달" not in word):
                 noun_adj_adv_list.append(word)
 
     count = Counter(noun_adj_adv_list)

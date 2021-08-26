@@ -2,7 +2,10 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+from model.weight_list import top5_list, top6_top10_list
+
 DATA_ROOT = "./model/data/input_data.csv"
+
 
 def custom_array(title, similarity):
     return {arg[0]: arg[1][1] for arg in zip(title, similarity)}
@@ -45,6 +48,7 @@ def one_food_collaborative_filtering(title, data_path):
     results, sim_scores = get_recommendations(title, indices, cosine_sim, food_info)
     return results.tolist(), sim_scores
 
+
 def percentage_score(score_list):
     percentage = list(map(lambda x: (x / sum(score_list)) * 100, score_list))
     result = list(map(lambda x: round(x, 1), percentage))
@@ -71,10 +75,22 @@ def foods_collaborative_filtering(foods_list, data_path):
                 if food in duplicated_foods_list:
                     final_result[food] += consideration_food[food]
 
+    items_list = add_weight(final_result.items(), top5_list, top6_top10_list)
+
     food_top3 = sorted(final_result.items(), key=(lambda x: x[1]), reverse=True)[:3]
     food_top3_list = [food[0] for food in food_top3]
     food_top3_score = percentage_score([food[1] for food in food_top3])
     return food_top3_list, food_top3_score
+
+
+def add_weight(items_list, top5_list, top6_top10_list):
+    final_result_list = [[x, y] for x, y in items_list]
+    for item in final_result_list:
+        if item[0] in top5_list:
+            item[1] *= 0.5
+        elif item[0] in top6_top10_list:
+            item[1] *= 0.7
+    return final_result_list
 
 
 if __name__ == "__main__":
