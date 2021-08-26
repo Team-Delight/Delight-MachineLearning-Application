@@ -7,7 +7,7 @@ server = Flask(__name__)
 CORS(server)
 
 
-@server.route('/api/ml-servers', methods=['POST'])
+@server.route('/ml-servers', methods=['POST'])
 def find_ml_results():
     selected_foods = request.get_json()['foods']
     results_name_list, result_score_list = foods_collaborative_filtering(selected_foods, DATA_ROOT)
