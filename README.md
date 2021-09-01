@@ -25,8 +25,8 @@
 - 음식이 가지고 있는 정보는 <br>
   인스타그램 크롤링을 통해 얻은 **인스타그램DB**와 음식이 가지는 고유의 특징인, **재료DB**로 이루어져 있습니다.
 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">머신러닝에 사용할 DB를 인스타그램과 음식재료로 선정한 이유</a><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">RDS가 아닌 CSV로 DB를 관리하는 이유</a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href=""> 머신러닝에 사용할 DB를 인스타그램과 음식재료로 선정한 이유 📝</a><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href=""> RDS가 아닌 CSV로 DB를 관리하는 이유 📝</a>
 
   <br>
 - 인스타그램 DB 구축을 위해 <br>
@@ -44,14 +44,14 @@
   **컨텐츠 기반 협업필터링**(Contents Based CF, CBCF)을 사용하였습니다.
   <br>
   <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">UBCF가 아닌 CBCF를 선정한 이유</a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">UBCF가 아닌 CBCF를 선정한 이유 📝</a>
   
   <br>
 - 음식이 가지고 있는 정보를 벡터로 표현하고, 각 음식들간의 코사인 유사도를 구해<br>
   **가장 유사도가 높은 음식을 3종을 추천**하고 있습니다.
   <br>
   <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">여러개의 음식을 Input으로 할 때 유사도가 가장 높은 음식 3종에 대한 선택기준</a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">여러개의 음식을 Input으로 할 때 유사도가 가장 높은 음식 3종에 대한 선택기준 📝</a>
 
 <br>
 <br>
@@ -65,7 +65,7 @@
   비동기처리를 위한 미들웨어인 **gunicorn을 적용**하였고 로드밸린싱을 위해 앞단에 **Nginx를 적용**하였습니다.
   <br>
   <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">스트레스 테스트로 알아보는 Nginx와 gunicorn 적용에 따른 성능차이</a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">스트레스 테스트로 알아보는 Nginx와 gunicorn 적용에 따른 성능차이 📝</a>
 
 <br>
 <br>
