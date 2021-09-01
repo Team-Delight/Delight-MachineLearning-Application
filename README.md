@@ -1,6 +1,6 @@
 <br>
 
-## **✨ 향해99 최종 프로젝트 Delight**
+## **🚩 향해99 최종 프로젝트 Delight**
 <div align="center">
   <a href="https://delight99.co.kr">
   <img src="https://images.velog.io/images/zpswl45/post/769180e5-fb06-46aa-b553-07a68338945a/%E1%84%80%E1%85%B5%E1%86%BA%E1%84%92%E1%85%A5%E1%84%87%E1%85%B3%20%E1%84%85%E1%85%B5%E1%84%83%E1%85%B3%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AD%E1%86%BC%20%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png"/>
@@ -18,14 +18,9 @@
 <br>
 <br>
 
-## **🚩 Requirements**
-<br>
-- 
-
-
 ## **🚩 Delight 머신러닝 서버**
 <br>
- ✏ [인스타그램 DB 구축]
+ 🔹 [인스타그램 DB 구축]
 
 - 음식이 가지고 있는 정보는 <br>
   인스타그램 크롤링을 통해 얻은 **인스타그램DB**와 음식이 가지는 고유의 특징인, **재료DB**로 이루어져 있습니다.
@@ -39,7 +34,7 @@
 
 <br>
 <br>
-✏ [모델링]
+🔹 [모델링]
 
 - 추천 모델은 비지도학습(Unsupervised learning) 중 하나인<br>
   **협업필터링**(Collaborative Filtering, CF) 모델을 사용하였습니다.
@@ -60,7 +55,7 @@
 
 <br>
 <br>
-✏ [Flask 서버와 성능 개선]
+🔹 [Flask 서버와 성능 개선]
 
 - Java서버를 통해 유저가 선택한 음식 리스트를 받습니다.<br>
   받은 음식 리스트를 Input으로하며, **CBCF의 결과인 추천할 음식 3종류를 Java 서버로 보냅니다.(POST)**
@@ -71,3 +66,32 @@
   <br>
   <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">스트레스 테스트로 알아보는 Nginx와 gunicorn 적용에 따른 성능차이</a>
+
+<br>
+<br>
+  
+  ## **🚩 Requirements**
+<br>
+
+- python 3.7.10<br>
+- scikit-learn 0.24.2<br>
+- flask 2.0.1<br>
+- flask-cors 3.0.10<br>
+- pandas 1.3.0<br>
+- konlpy 0.5.2<br>
+- selenium 3.141.0
+
+<br>
+<br>
+
+## 🚩 **Git - flow Branch 전략을 적용**
+![](https://images.velog.io/images/zpswl45/post/7ecffd87-3dde-4abc-b7e3-9971b3a75dd9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-07-30_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_3.48.33.png)
+
+
+```
+master  : 테스트 서버에서 테스트가 끝나고 운영서버로 배포 할 수 있는 브랜치
+develop : 다음 버전을 출시전 테스트를 위한 브랜치 
+feature : 기능을 개발하는 브랜치
+release : 이번 출시 버전을 준비하는 브랜치
+hotfix  : 운영중인 버전에서 발생한 버그를 수정 하는 브랜치
+```
