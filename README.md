@@ -31,7 +31,9 @@
   <br>
 - 인스타그램 DB 구축을 위해 <br>
   **Selenuim 라이브러리를 활용**하여 1개 음식당 200개의 인스타그램 게시글을 크롤링하였습니다.
-
+  <br>
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="https://github.com/Team-Delight/Delight-MachineLearning-Application/blob/develop/util/instagram_preprocessing/ref_instagram_preprocessing.ipynb">1개 음식이 인스타그램DB로 구축되는 전반적인 과정 📝</a>
 <br>
 <br>
 🔹 [모델링]
