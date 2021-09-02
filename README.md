@@ -46,14 +46,11 @@
   **컨텐츠 기반 협업필터링**(Contents Based CF, CBCF)을 사용하였습니다.
   <br>
   <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">UBCF가 아닌 CBCF를 선정한 이유 📝</a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="https://github.com/Team-Delight/Delight-MachineLearning-Application/wiki/%EB%82%B4%EC%9A%A9-%EA%B8%B0%EB%B0%98-%ED%98%91%EC%97%85-%ED%95%84%ED%84%B0%EB%A7%81-(-Contents-Based-Collaborative-Filtering)%EA%B3%BC-%EC%84%A0%EC%A0%95-%EC%9D%B4%EC%9C%A0">UBCF가 아닌 CBCF를 선정한 이유 📝</a>
   
   <br>
 - 음식이 가지고 있는 정보를 벡터로 표현하고, 각 음식들간의 코사인 유사도를 구해<br>
   **가장 유사도가 높은 음식을 3종을 추천**하고 있습니다.
-  <br>
-  <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">여러개의 음식을 Input으로 할 때 유사도가 가장 높은 음식 3종에 대한 선택기준 📝</a>
   
   <br>
 - 추천 모델의 성능개선을 위해 **별도의 가중치**를 적용하였습니다.<br>
@@ -72,7 +69,7 @@
   비동기처리를 위한 미들웨어인 **gunicorn을 적용**하였고 로드밸린싱을 위해 앞단에 **Nginx를 적용**하였습니다.
   <br>
   <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="">스트레스 테스트로 알아보는 Nginx와 gunicorn 적용에 따른 성능차이 📝</a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉 <a href="https://github.com/Team-Delight/Delight-MachineLearning-Application/wiki/%EC%8A%A4%ED%8A%B8%EB%A0%88%EC%8A%A4-%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%A1%9C-%EC%95%8C%EC%95%84%EB%B3%B4%EB%8A%94-Nginx%EC%99%80-gunicorn-%EC%A0%81%EC%9A%A9%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%84%B1%EB%8A%A5%EC%B0%A8%EC%9D%B4-%F0%9F%93%9D">스트레스 테스트로 알아보는 Nginx와 gunicorn 적용에 따른 성능차이 📝</a>
 
 <br>
 <br>
